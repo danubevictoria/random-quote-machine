@@ -1,0 +1,49 @@
+body {
+  background-color: #E8E8E8;
+}
+
+.quote_area {
+  background-color: white;
+  border-radius: 10px;
+  width: 700px;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+i.fa-quote-left {
+  margin-top: 40px;
+/*   margin-left: 40px; */
+}
+
+#new-quote-button {
+  position: relative;
+  bottom: 0;
+}
+
+#quote {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+blockquote {
+  border-left: none;
+}
+
+/* A DIFFERENT WAY TO ADD QUOTES */
+/* blockquote {
+  quotes: "\201C" "\201D";
+}
+
+blockquote:before {
+  content: open-quote;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+blockquote:after {
+  content: close-quote;
+font-weight: bold;
+  font-size: 48px;
+} */
