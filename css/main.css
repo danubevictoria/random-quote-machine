@@ -2,33 +2,68 @@ body {
   background-color: #E8E8E8;
 }
 
-.quote_area {
+.quote-area {
   background-color: white;
   border-radius: 10px;
-  width: 700px;
-  height: 300px;
+  width: 800px;
+  max-height: 1000px;
+  height: auto;
   margin: 0 auto;
   margin-top: 100px;
-  overflow: hidden;
+  margin-bottom: 100px;
+  display: flex;
 }
 
 i.fa-quote-left {
   margin-top: 40px;
-/*   margin-left: 40px; */
-}
-
-#new-quote-button {
-  position: relative;
-  bottom: 0;
 }
 
 #quote {
-  font-size: 18px;
-  line-height: 28px;
+  opacity: 0;
+}
+
+#new-quote-button {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  /*The clear CSS property specifies whether an element can be next to floating elements that precede it or must be moved down (cleared) below them.    */
+  clear: both;
+}
+
+#quote {
+  font-size: 24px;
+  line-height: 34px;
 }
 
 blockquote {
   border-left: none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#quote-span, #author {
+  transition: opacity 1s ease-in-out;
 }
 
 /* A DIFFERENT WAY TO ADD QUOTES */

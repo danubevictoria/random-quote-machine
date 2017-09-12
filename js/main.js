@@ -1,41 +1,88 @@
-var request = new XMLHttpRequest();
 var url =
   "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1";
+var colors = [
+  "#16a085",
+  "#27ae60",
+  "#2c3e50",
+  "#f39c12",
+  "#e74c3c",
+  "#9b59b6",
+  "#FB6964",
+  "#342224",
+  "#472E32",
+  "#BDBB99",
+  "#77B1A9",
+  "#73A857"
+];
 
-request.open(
-  "GET",
-  url,
-  true
-);
+$.ajax({
+  url: url,
+  success: function(data) {
+    // console.log(data);
+    var quote_span = document.getElementById("quote-span");
+    var author = document.getElementById("author");
+    var quote = document.getElementById("quote");
 
-request.onload = function() {
-  var quote = document.getElementById("quote-span");
-  var author = document.getElementById("author");
-  var data = JSON.parse(this.response);
+    if (data.length > 0) {
+      $("#quote").animate(
+        {
+          opacity: 0
+        },
+        500,
+        function() {
+          $(this).animate(
+            {
+              opacity: 1
+            },
+            500
+          );
+          quote_span.innerHTML = data[0].content;
 
-  console.log(data);
-
-  if (data.length > 0) {
-    quote.innerHTML = data[0].content;
-    author.textContent = data[0].title;
-  }
-};
-
-request.send();
+          author.innerHTML = data[0].title;
+        }
+      );
+    }
+  },
+  cache: false
+});
 
 // jQuery function on click of new quote button that makes an ajax call
 $("#new-quote-button").on("click", function() {
-  console.log("clicked");
+  // console.log("clicked");
   $.ajax({
     url: url,
     success: function(data) {
-      console.log(data);
-      var quote = document.getElementById("quote-span");
+      // console.log(data);
+      var quote_span = document.getElementById("quote-span");
       var author = document.getElementById("author");
+      var rand = colors[Math.floor(Math.random() * colors.length)];
 
       if (data.length > 0) {
-        quote.innerHTML = data[0].content;
-        author.textContent = data[0].title;
+        $("#quote").animate(
+          {
+            opacity: 0
+          },
+          500,
+          function() {
+            $(this).animate(
+              {
+                opacity: 1
+              },
+              500
+            );
+            quote_span.innerHTML = data[0].content;
+            quote_span.style.color = rand;
+            author.innerHTML = data[0].title;
+
+            $("body").animate(
+              {
+                backgroundColor: rand
+              },
+              500
+            );
+            console.log("Here");
+          }
+        );
       }
     },
     cache: false
