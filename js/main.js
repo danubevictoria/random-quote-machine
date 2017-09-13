@@ -47,8 +47,7 @@ $.ajax({
 });
 
 // jQuery function on click of new quote button that makes an ajax call
-$("#new-quote-button").on("click", function() {
-  // console.log("clicked");
+function newQuote() {
   $.ajax({
     url: url,
     success: function(data) {
@@ -87,4 +86,7 @@ $("#new-quote-button").on("click", function() {
     },
     cache: false
   });
-});
+}
+
+$("#new-quote-button").on("click", newQuote);
+document.addEventListener("touchStart", newQuote);
